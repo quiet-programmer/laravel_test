@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('admin.authenticate');
 });
+
+Route::group(['prefix' => 'v1/admin/auth'], function () {
+    Route::controller(AdminAuthController::class)->group(function () {
+        Route::get('/authenticate', 'authenticate')->name('admin.authenticate');
+    });
+});
+
+Route::group(['prefix' => 'v1/admin'], function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/dashboard', 'dashboard')->name('admin.home');
+        Route::get('/logout', 'destroy')->name('admin.destroy');
+    });
+});
+
+require __DIR__ . '/auth.php';

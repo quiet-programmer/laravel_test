@@ -18,5 +18,20 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        if ($this->command->confirm('Do you want to refresh the Database?')) {
+            $this->command->call('migrate:refresh');
+            $this->command->info('Database has been refreshed');
+        }
+
+        $this->call([
+            AdminSeeder::class,
+            // EventRequestSeeder::class,
+            // AttendeeSeeder::class,
+            // SpeakerSeeder::class,
+            // NotificationSeeder::class,
+            // LineManagerSeeder::class,
+            // TagsSeeder::class,
+        ]);
     }
 }
