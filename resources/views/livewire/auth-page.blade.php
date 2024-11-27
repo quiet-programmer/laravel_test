@@ -24,7 +24,7 @@
 
             <button wire:loading.attr="disabled" wire:loading.class="bg-gray-400" wire:target="loginUser"
                 class="px-4 py-2 bg-teal-800 text-white rounded">
-                <span wire:loading.remove wire:target="loginUser">Create</span>
+                <span wire:loading.remove wire:target="loginUser">Login</span>
                 <span wire:loading wire:target="loginUser">Loading...</span>
             </button>
         </form>

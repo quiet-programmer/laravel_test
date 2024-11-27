@@ -18,9 +18,6 @@ class CustomerForm extends Form
     #[Rule('required|min:2')]
     public $last_name = '';
 
-    // #[Rule('required|email|unique:customers,email')]
-    // public $email = '';
-
     #[Rule('required|email')]
     public $email = '';
 
@@ -52,7 +49,6 @@ class CustomerForm extends Form
             'email',
         ];
 
-        // Add unique validation only for new records
         if (!$this->customerId) {
             $emailRule[] = 'unique:customers,email';
         } else {
@@ -81,7 +77,6 @@ class CustomerForm extends Form
             filter_var($this->email, FILTER_VALIDATE_EMAIL);
     }
 
-    // CustomerForm.php
     public function hasEmptyFields(): bool
     {
         return empty(trim($this->first_name)) ||
@@ -98,7 +93,6 @@ class CustomerForm extends Form
 
     public function store(): bool
     {
-        // $this->validate();
 
         $this->validate([
             'email' => ['required', 'email', 'unique:customers,email']
