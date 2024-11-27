@@ -2,6 +2,6 @@
 
 @section('content')
 <center>
-    <h1>Data Page</h1>
+    @livewire('record-list')
 </center>
 @endsection

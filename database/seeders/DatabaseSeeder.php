@@ -26,12 +26,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             AdminSeeder::class,
-            // EventRequestSeeder::class,
-            // AttendeeSeeder::class,
-            // SpeakerSeeder::class,
-            // NotificationSeeder::class,
-            // LineManagerSeeder::class,
-            // TagsSeeder::class,
+            CustomersSeeder::class
         ]);
     }
 }
